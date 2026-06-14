@@ -98,6 +98,7 @@ function M.setup(opts)
 	set("Delimiter", { fg = p.muted })
 
 	-- Legacy syntax
+	set("SpellBad", { undercurl = true })
 	set("Comment", { fg = p.comment, italic = true })
 	set("Constant", { fg = p.fg_alt })
 	set("String", { fg = p.green })
