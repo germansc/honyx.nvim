@@ -2,31 +2,10 @@
 -- A minimal colorscheme blending warm honey-gold accents with deep onyx blacks.
 
 local M = {}
+local palette = require("honyx.palette")
 
 local config = {
 	transparent = false,
-}
-
-local palette = {
-	bg = "#0f0f10",
-	bg_alt = "#1a1a1c",
-	bg_highlight = "#22262b",
-	bg_visual = "#2a2f35",
-
-	border = "#30353c",
-	muted = "#808590",
-	comment = "#606367",
-
-	fg = "#F5F5FF",
-	fg_alt = "#c8cad4",
-
-	honey = "#efc983",
-	honey_dim = "#f3d8a5",
-	honey_dark = "#d4aa6e",
-
-	green = "#78dbb8",
-	blue = "#9ab8d4",
-	red = "#FF7070",
 }
 
 -- Helpers
@@ -41,6 +20,7 @@ end
 -- This is some kind of comment in this style of stuff.
 function M.setup(opts)
 	-- Extend the configuration table and override with custom options.
+	-- Only transparent toggle for now.
 	config = vim.tbl_deep_extend("force", config, opts or {})
 
 	vim.g.colors_name = "honyx"
@@ -50,7 +30,7 @@ function M.setup(opts)
 
 	vim.o.termguicolors = true
 
-	local p = palette
+	local p = vim.deepcopy(palette)
 
 	p.bg = config.transparent and "NONE" or p.bg
 	p.bg_float = config.transparent and "NONE" or p.bg_alt
