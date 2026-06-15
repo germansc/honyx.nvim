@@ -176,6 +176,26 @@ function M.setup(opts)
 	link("@markup.heading", "Title")
 	link("@markup.link", "Underlined")
 	link("@markup.raw", "String")
+
+	-- Basic NvimTree Integration:
+	set("NvimTreeNormal", { fg = p.fg, bg = p.bg_float })
+	set("NvimTreeNormalFloat", { fg = p.fg, bg = p.bg_float })
+	set("NvimTreeEndOfBuffer", { fg = p.bg_float, bg = p.bg_float })
+	set("NvimTreeWinSeparator", { fg = p.border, bg = p.bg_float })
+
+	set("NvimTreeRootFolder", { fg = p.honey, bold = true })
+	set("NvimTreeFolderName", { fg = p.blue })
+	set("NvimTreeEmptyFolderName", { fg = p.muted })
+	set("NvimTreeIndentMarker", { fg = p.border })
+
+	set("NvimTreeSpecialFile", { fg = p.honey_dim, underline = true })
+	set("NvimTreeImageFile", { fg = p.fg_alt })
+	set("NvimTreeSymlink", { fg = p.blue })
+	set("NvimTreeExecFile", { fg = p.green })
+
+	set("NvimTreeGitDirty", { fg = p.honey })
+	set("NvimTreeGitNew", { fg = p.green })
+	set("NvimTreeGitDeleted", { fg = p.red })
 end
 
 return M
