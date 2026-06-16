@@ -12,12 +12,12 @@ local palette = {
 	fg_alt = "#c8cad4",
 
 	honey = "#efc983",
-	honey_dim = "#f3d8a5",
+	honey_light = "#f3d8a5",
 	honey_dark = "#d4aa6e",
 
 	green = "#78dbb8",
 	blue = "#9ab8d4",
-	red = "#FF7070",
+	red = "#D96868",
 }
 
 return palette

@@ -7,7 +7,7 @@ local normal_b = { fg = p.fg_alt, bg = p.bg_highlight }
 local normal_c = { fg = p.muted, bg = p.bg_alt }
 
 local insert_a = { fg = p.bg, bg = p.blue, gui = "bold" }
-local visual_a = { fg = p.bg, bg = p.honey_dim, gui = "bold" }
+local visual_a = { fg = p.bg, bg = p.honey_light, gui = "bold" }
 local replace_a = { fg = p.bg, bg = p.red, gui = "bold" }
 local command_a = { fg = p.bg, bg = p.green, gui = "bold" }
 
