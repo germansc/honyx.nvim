@@ -7,12 +7,17 @@ local theme = require("honyx.theme")
 
 local config = {
 	transparent = false,
+	styles = {
+		comments = { italic = true },
+		keywords = { italic = true },
+		functions = {},
+	},
+	overrides = {},
 }
 
 -- This is some kind of comment in this style of stuff.
 function M.setup(opts)
-	-- Extend the configuration table and override with custom options.
-	-- Only transparent toggle for now.
+	-- Extend the configuration table with user styles and highlight overrides.
 	config = vim.tbl_deep_extend("force", config, opts or {})
 
 	vim.g.colors_name = "honyx"

@@ -36,12 +36,33 @@ vim.cmd.colorscheme("honyx")
 ```lua
 require("honyx").setup({
   transparent = false, -- enable to remove all backgrounds
+
+  styles = {
+    comments = { italic = true },
+    keywords = { italic = true },
+    functions = { bold = false },
+  },
+
+  overrides = {
+    NormalFloat = { bg = "#1f1f22" },
+    Comment = { fg = "#70757f" },
+  },
 })
 ```
 
-| Option        | Default | Description                          |
-|---------------|---------|--------------------------------------|
-| `transparent` | `false` | Remove all background highlights     |
+| Option         | Default                                              | Description                          |
+|----------------|------------------------------------------------------|--------------------------------------|
+| `transparent`  | `false`                                              | Remove all background highlights     |
+| `styles`       | comment and keywords italics on; function styles off | Apply shared text styles by role     |
+| `overrides`    | `{}`                                                 | Override individual highlight groups |
+
+`styles.comments` applies to `Comment` and `SpecialComment`.
+
+`styles.keywords` applies to `Statement`, `Conditional`, `Repeat`, `Label`, `Operator`, `Keyword`, `PreProc`, `Include`, `Define`, `Macro`, and `PreCondit`.
+
+`styles.functions` applies to `Function`.
+
+`overrides` is merged last, so it can replace any generated highlight field.
 
 ## Palette
 

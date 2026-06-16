@@ -1,10 +1,44 @@
 local M = {}
 
+local function merge(base, extra)
+	if not extra then
+		return base
+	end
+
+	local merged = {}
+
+	for key, value in pairs(base) do
+		merged[key] = value
+	end
+
+	for key, value in pairs(extra) do
+		merged[key] = value
+	end
+
+	return merged
+end
+
+local function apply_style(highlights, groups, style)
+	if not style or next(style) == nil then
+		return
+	end
+
+	for _, group in ipairs(groups) do
+		highlights[group] = merge(highlights[group], style)
+	end
+end
+
+local function apply_overrides(highlights, overrides)
+	for group, spec in pairs(overrides or {}) do
+		highlights[group] = merge(highlights[group] or {}, spec)
+	end
+end
+
 function M.build(config, p)
 	local bg0 = config.transparent and "NONE" or p.bg
 	local bg1 = config.transparent and "NONE" or p.bg_alt
 
-	return {
+	local highlights = {
 		Normal = { fg = p.fg, bg = bg0 },
 		NormalFloat = { fg = p.fg, bg = bg1 },
 		FloatBorder = { fg = p.border, bg = bg1 },
@@ -160,6 +194,26 @@ function M.build(config, p)
 		NvimTreeGitNew = { fg = p.green },
 		NvimTreeGitDeleted = { fg = p.red },
 	}
+
+	apply_style(highlights, { "Comment", "SpecialComment" }, config.styles and config.styles.comments)
+	apply_style(highlights, { "Function" }, config.styles and config.styles.functions)
+	apply_style(highlights, {
+		"Statement",
+		"Conditional",
+		"Repeat",
+		"Label",
+		"Operator",
+		"Keyword",
+		"PreProc",
+		"Include",
+		"Define",
+		"Macro",
+		"PreCondit",
+	}, config.styles and config.styles.keywords)
+
+	apply_overrides(highlights, config.overrides)
+
+	return highlights
 end
 
 return M
