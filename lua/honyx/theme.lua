@@ -202,7 +202,6 @@ function M.build(config, p)
 		"Conditional",
 		"Repeat",
 		"Label",
-		"Operator",
 		"Keyword",
 		"PreProc",
 		"Include",

@@ -58,7 +58,7 @@ require("honyx").setup({
 
 `styles.comments` applies to `Comment` and `SpecialComment`.
 
-`styles.keywords` applies to `Statement`, `Conditional`, `Repeat`, `Label`, `Operator`, `Keyword`, `PreProc`, `Include`, `Define`, `Macro`, and `PreCondit`.
+`styles.keywords` applies to `Statement`, `Conditional`, `Repeat`, `Label`, `Keyword`, `PreProc`, `Include`, `Define`, `Macro`, and `PreCondit`.
 
 `styles.functions` applies to `Function`.
 
