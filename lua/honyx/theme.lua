@@ -1,22 +1,7 @@
+local utils = require("honyx.utils")
+local integrations = require("honyx.integrations")
+
 local M = {}
-
-local function merge(base, extra)
-	if not extra then
-		return base
-	end
-
-	local merged = {}
-
-	for key, value in pairs(base) do
-		merged[key] = value
-	end
-
-	for key, value in pairs(extra) do
-		merged[key] = value
-	end
-
-	return merged
-end
 
 local function apply_style(highlights, groups, style)
 	if not style or next(style) == nil then
@@ -24,13 +9,13 @@ local function apply_style(highlights, groups, style)
 	end
 
 	for _, group in ipairs(groups) do
-		highlights[group] = merge(highlights[group], style)
+		highlights[group] = utils.merge(highlights[group], style)
 	end
 end
 
 local function apply_overrides(highlights, overrides)
 	for group, spec in pairs(overrides or {}) do
-		highlights[group] = merge(highlights[group] or {}, spec)
+		highlights[group] = utils.merge(highlights[group] or {}, spec)
 	end
 end
 
@@ -177,23 +162,14 @@ function M.build(config, p)
 		["@markup.heading"] = { link = "Title" },
 		["@markup.link"] = { link = "Underlined" },
 		["@markup.raw"] = { link = "String" },
-
-		NvimTreeNormal = { fg = p.fg, bg = bg1 },
-		NvimTreeNormalFloat = { fg = p.fg, bg = bg1 },
-		NvimTreeEndOfBuffer = { fg = p.bg_alt, bg = bg1 },
-		NvimTreeWinSeparator = { fg = p.border, bg = bg1 },
-		NvimTreeRootFolder = { fg = p.honey, bold = true },
-		NvimTreeFolderName = { fg = p.blue },
-		NvimTreeEmptyFolderName = { fg = p.muted },
-		NvimTreeIndentMarker = { fg = p.border },
-		NvimTreeSpecialFile = { fg = p.honey_light, underline = true },
-		NvimTreeImageFile = { fg = p.fg_alt },
-		NvimTreeSymlink = { fg = p.blue },
-		NvimTreeExecFile = { fg = p.green },
-		NvimTreeGitDirty = { fg = p.honey },
-		NvimTreeGitNew = { fg = p.green },
-		NvimTreeGitDeleted = { fg = p.red },
 	}
+
+	local resolved_palette = vim.tbl_extend("force", p, {
+		bg = bg0,
+		bg_alt = bg1,
+	})
+
+	highlights = utils.merge(highlights, integrations.load(resolved_palette))
 
 	apply_style(highlights, { "Comment", "SpecialComment" }, config.styles and config.styles.comments)
 	apply_style(highlights, { "Function" }, config.styles and config.styles.functions)
