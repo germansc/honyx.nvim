@@ -89,7 +89,7 @@ function M.build(config, p)
 		Boolean = { fg = p.honey },
 		Float = { fg = p.honey },
 		Identifier = { fg = p.fg },
-		Function = { fg = p.honey_dark },
+		Function = { fg = p.honey },
 		Statement = { fg = p.muted },
 		Conditional = { fg = p.muted },
 		Repeat = { fg = p.muted },
