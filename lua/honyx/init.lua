@@ -24,7 +24,7 @@ end
 --- Configure and apply the Honyx colorscheme.
 --- @param opts? { transparent?: boolean, styles?: table, overrides?: table }
 function M.setup(opts)
-	local cfg = config.merge(config.defaults(), opts)
+	local cfg = config.build(opts)
 	local highlights = theme.build(cfg, palette)
 	apply(highlights)
 end
