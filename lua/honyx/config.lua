@@ -22,11 +22,16 @@ end
 --- @return table
 function M.build(raw_opts)
 	local opts = type(raw_opts) == "table" and raw_opts or {}
-	return utils.merge(DEFAULTS, {
-		transparent = not not opts.transparent,
+	local overrides = {
 		styles = to_table(opts.styles),
 		overrides = to_table(opts.overrides),
-	})
+	}
+
+	if opts.transparent ~= nil then
+		overrides.transparent = not not opts.transparent
+	end
+
+	return utils.merge(DEFAULTS, overrides)
 end
 
 return M
