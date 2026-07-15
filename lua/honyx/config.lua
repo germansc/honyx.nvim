@@ -21,17 +21,17 @@ end
 --- @param raw_opts? table
 --- @return table
 function M.build(raw_opts)
-	local opts = type(raw_opts) == "table" and raw_opts or {}
-	local overrides = {
-		styles = to_table(opts.styles),
-		overrides = to_table(opts.overrides),
+	local user_opts = type(raw_opts) == "table" and raw_opts or {}
+	local user_config = {
+		styles = to_table(user_opts.styles),
+		overrides = to_table(user_opts.overrides),
 	}
 
-	if opts.transparent ~= nil then
-		overrides.transparent = not not opts.transparent
+	if user_opts.transparent ~= nil then
+		user_config.transparent = not not user_opts.transparent
 	end
 
-	return utils.merge(DEFAULTS, overrides)
+	return utils.merge(DEFAULTS, user_config)
 end
 
 return M
