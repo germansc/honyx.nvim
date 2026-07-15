@@ -2,17 +2,17 @@
 
 local p = require("honyx.palette")
 
-local normal_a = { fg = p.bg, bg = p.honey, gui = "bold" }
+local normal_a = { fg = p.onyx, bg = p.honey, gui = "bold" }
 local normal_b = { fg = p.fg_alt, bg = p.bg_highlight }
-local normal_c = { fg = p.muted, bg = p.bg_alt }
+local normal_c = { fg = p.muted, bg = p.onyx_alt }
 
-local insert_a = { fg = p.bg, bg = p.blue, gui = "bold" }
-local visual_a = { fg = p.bg, bg = p.honey_light, gui = "bold" }
-local replace_a = { fg = p.bg, bg = p.red, gui = "bold" }
-local command_a = { fg = p.bg, bg = p.green, gui = "bold" }
+local insert_a = { fg = p.onyx, bg = p.blue, gui = "bold" }
+local visual_a = { fg = p.onyx, bg = p.honey_light, gui = "bold" }
+local replace_a = { fg = p.onyx, bg = p.red, gui = "bold" }
+local command_a = { fg = p.onyx, bg = p.green, gui = "bold" }
 
-local inactive_a = { fg = p.comment, bg = p.bg_alt }
-local inactive_c = { fg = p.comment, bg = p.bg_alt }
+local inactive_a = { fg = p.comment, bg = p.onyx_alt }
+local inactive_c = { fg = p.comment, bg = p.onyx_alt }
 
 return {
 	normal = {

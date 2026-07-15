@@ -25,7 +25,7 @@ end
 --- @param opts? { transparent?: boolean, styles?: table, overrides?: table }
 function M.setup(opts)
 	local cfg = config.build(opts)
-	local highlights = theme.build(cfg, palette)
+	local highlights = theme.build(cfg, palette.resolve(cfg))
 	apply(highlights)
 end
 

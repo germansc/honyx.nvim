@@ -20,49 +20,46 @@ local function apply_overrides(highlights, overrides)
 end
 
 function M.build(config, p)
-	local bg0 = config.transparent and "NONE" or p.bg
-	local bg1 = config.transparent and "NONE" or p.bg_alt
-
 	local highlights = {
-		Normal = { fg = p.fg, bg = bg0 },
-		NormalFloat = { fg = p.fg, bg = bg1 },
-		FloatBorder = { fg = p.border, bg = bg1 },
-		FloatTitle = { fg = p.blue, bg = bg1 },
-		ColorColumn = { bg = bg1 },
+		Normal = { fg = p.fg, bg = p.bg },
+		NormalFloat = { fg = p.fg, bg = p.bg_alt },
+		FloatBorder = { fg = p.border, bg = p.bg_alt },
+		FloatTitle = { fg = p.blue, bg = p.bg_alt },
+		ColorColumn = { bg = p.bg_alt },
 		Conceal = { fg = p.muted },
-		CursorLine = { bg = bg1 },
-		CursorColumn = { bg = bg1 },
-		CursorLineNr = { fg = p.fg, bg = bg1 },
+		CursorLine = { bg = p.bg_alt },
+		CursorColumn = { bg = p.bg_alt },
+		CursorLineNr = { fg = p.fg, bg = p.bg_alt },
 		Directory = { fg = p.blue },
-		EndOfBuffer = { fg = p.bg },
+		EndOfBuffer = { fg = p.onyx },
 		ErrorMsg = { fg = p.red },
 		WinSeparator = { fg = p.border },
-		Folded = { fg = p.muted, bg = bg1 },
-		FoldColumn = { fg = p.muted, bg = bg0 },
-		SignColumn = { fg = p.muted, bg = bg0 },
-		IncSearch = { fg = p.bg, bg = p.honey_light, bold = true },
-		LineNr = { fg = p.comment, bg = bg0 },
+		Folded = { fg = p.muted, bg = p.bg_alt },
+		FoldColumn = { fg = p.muted, bg = p.bg },
+		SignColumn = { fg = p.muted, bg = p.bg },
+		IncSearch = { fg = p.onyx, bg = p.honey_light, bold = true },
+		LineNr = { fg = p.comment, bg = p.bg },
 		MatchParen = { fg = p.honey_light, bg = p.bg_highlight, bold = true },
 		ModeMsg = { fg = p.fg },
 		MoreMsg = { fg = p.blue },
 		NonText = { fg = p.border },
-		Pmenu = { fg = p.muted, bg = bg1 },
-		PmenuSel = { fg = p.bg, bg = p.honey_light },
+		Pmenu = { fg = p.muted, bg = p.bg_alt },
+		PmenuSel = { fg = p.onyx, bg = p.honey_light },
 		PmenuSbar = { bg = p.bg_highlight },
 		PmenuThumb = { bg = p.border },
 		Question = { fg = p.blue },
-		Search = { fg = p.bg, bg = p.blue, bold = true },
+		Search = { fg = p.onyx, bg = p.blue, bold = true },
 		SpecialKey = { fg = p.muted },
-		StatusLine = { fg = p.fg_alt, bg = bg1 },
-		StatusLineNC = { fg = p.muted, bg = bg1 },
-		TabLine = { fg = p.muted, bg = bg1 },
-		TabLineFill = { bg = bg1 },
+		StatusLine = { fg = p.fg_alt, bg = p.bg_alt },
+		StatusLineNC = { fg = p.muted, bg = p.bg_alt },
+		TabLine = { fg = p.muted, bg = p.bg_alt },
+		TabLineFill = { bg = p.bg_alt },
 		TabLineSel = { fg = p.blue, bg = p.bg_highlight },
 		Title = { fg = p.honey },
 		Visual = { bg = p.bg_visual },
 		WarningMsg = { fg = p.honey },
 		Whitespace = { fg = p.border },
-		WildMenu = { fg = p.bg, bg = p.honey_dark },
+		WildMenu = { fg = p.onyx, bg = p.honey_dark },
 		Delimiter = { fg = p.muted },
 
 		SpellBad = { undercurl = true, sp = "NONE" },
@@ -96,7 +93,7 @@ function M.build(config, p)
 		Underlined = { fg = p.blue, underline = true },
 		Ignore = { fg = p.comment },
 		Error = { fg = p.red },
-		Todo = { fg = p.honey, bg = p.bg_alt, italic = true },
+		Todo = { fg = p.honey, bg = p.onyx_alt, italic = true },
 		gitHashAbbrev = { fg = p.honey_light },
 
 		DiagnosticError = { fg = p.red },
@@ -112,9 +109,9 @@ function M.build(config, p)
 		Added = { fg = p.blue },
 		Changed = { fg = p.honey },
 		Removed = { fg = p.red },
-		DiffAdd = { fg = p.blue, bg = p.bg_alt },
-		DiffChange = { fg = p.honey, bg = p.bg_alt },
-		DiffDelete = { fg = p.red, bg = p.bg_alt },
+		DiffAdd = { fg = p.blue, bg = p.onyx_alt },
+		DiffChange = { fg = p.honey, bg = p.onyx_alt },
+		DiffDelete = { fg = p.red, bg = p.onyx_alt },
 		DiffText = { fg = p.honey_light, bg = p.bg_highlight },
 
 		CurSearch = { link = "IncSearch" },
@@ -164,12 +161,7 @@ function M.build(config, p)
 		["@markup.raw"] = { link = "String" },
 	}
 
-	local resolved_palette = vim.tbl_extend("force", p, {
-		bg = bg0,
-		bg_alt = bg1,
-	})
-
-	highlights = utils.merge(highlights, integrations.load(resolved_palette))
+	highlights = utils.merge(highlights, integrations.load(p))
 
 	apply_style(highlights, { "Comment", "SpecialComment" }, config.styles and config.styles.comments)
 	apply_style(highlights, { "Function" }, config.styles and config.styles.functions)

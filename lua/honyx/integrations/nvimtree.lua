@@ -4,7 +4,7 @@ function M.get(p)
 	return {
 		NvimTreeNormal = { fg = p.fg, bg = p.bg_alt },
 		NvimTreeNormalFloat = { fg = p.fg, bg = p.bg_alt },
-		NvimTreeEndOfBuffer = { fg = p.bg_alt, bg = p.bg_alt },
+		NvimTreeEndOfBuffer = { fg = p.onyx_alt, bg = p.bg_alt },
 		NvimTreeWinSeparator = { fg = p.border, bg = p.bg_alt },
 		NvimTreeRootFolder = { fg = p.honey, bold = true },
 		NvimTreeFolderName = { fg = p.blue },
