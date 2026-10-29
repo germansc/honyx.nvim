@@ -9,12 +9,12 @@ local theme = require("honyx.theme")
 --- Apply highlight groups to Neovim.
 --- Pure side effects: clears previous syntax, sets env, calls nvim_set_hl.
 local function apply(highlights)
-	vim.g.colors_name = "honyx"
+	vim.o.background = "dark"
 
 	vim.cmd.highlight("clear")
-	vim.cmd.syntax("reset")
 
 	vim.o.termguicolors = true
+	vim.g.colors_name = "honyx"
 
 	for group, spec in pairs(highlights) do
 		vim.api.nvim_set_hl(0, group, spec)
