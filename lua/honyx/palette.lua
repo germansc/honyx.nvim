@@ -23,6 +23,25 @@ M.green = "#78dbb8"
 M.blue = "#9ab8d4"
 M.red = "#D96868"
 
+M.terminal = {
+	M.onyx,
+	M.red,
+	M.green,
+	M.honey,
+	M.blue,
+	M.honey_dark,
+	M.green,
+	M.fg_alt,
+	M.onyx,
+	M.red,
+	M.green,
+	M.honey,
+	M.blue,
+	M.honey_dark,
+	M.green,
+	M.fg_alt,
+}
+
 --- Resolve transparency and return a palette with semantic bg/bg_alt keys.
 function M.resolve(config)
 	return vim.tbl_extend("force", M, {

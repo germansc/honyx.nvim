@@ -4,6 +4,7 @@ local M = {}
 
 local DEFAULTS = {
 	transparent = false,
+	terminal_colors = true,
 	styles = {
 		comments = { italic = true },
 		keywords = { italic = true },
@@ -29,6 +30,10 @@ function M.build(raw_opts)
 
 	if user_opts.transparent ~= nil then
 		user_config.transparent = not not user_opts.transparent
+	end
+
+	if user_opts.terminal_colors ~= nil then
+		user_config.terminal_colors = not not user_opts.terminal_colors
 	end
 
 	return utils.merge(DEFAULTS, user_config)

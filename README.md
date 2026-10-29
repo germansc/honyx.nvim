@@ -34,6 +34,7 @@ require("honyx").setup()
 ```lua
 require("honyx").setup({
   transparent = false, -- enable to remove the main window backgrounds
+  terminal_colors = true, -- override terminal ANSI colors
 
   styles = {
     comments = { italic = true },
@@ -48,11 +49,12 @@ require("honyx").setup({
 })
 ```
 
-| Option        | Default                                              | Description                          |
-| ------------- | ---------------------------------------------------- | ------------------------------------ |
-| `transparent` | `false`                                              | Remove the main window backgrounds   |
-| `styles`      | comment and keywords italics on; function styles off | Apply shared text styles by role     |
-| `overrides`   | `{}`                                                 | Override individual highlight groups |
+| Option            | Default                                              | Description                          |
+| ----------------- | ---------------------------------------------------- | ------------------------------------ |
+| `transparent`     | `false`                                              | Remove the main window backgrounds   |
+| `terminal_colors` | `true`                                               | Override terminal ANSI colors        |
+| `styles`          | comment and keywords italics on; function styles off | Apply shared text styles by role     |
+| `overrides`       | `{}`                                                 | Override individual highlight groups |
 
 `styles.comments` applies to `Comment` and `SpecialComment`.
 
