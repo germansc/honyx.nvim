@@ -62,7 +62,10 @@ function M.build(config, p)
 		WildMenu = { fg = p.onyx, bg = p.honey_dark },
 		Delimiter = { fg = p.muted },
 
-		SpellBad = { undercurl = true, sp = "NONE" },
+		SpellBad = { undercurl = true, sp = p.red },
+		SpellCap = { undercurl = true, sp = p.honey },
+		SpellLocal = { undercurl = true, sp = p.green },
+		SpellRare = { undercurl = true, sp = p.blue },
 		Comment = { fg = p.comment, italic = true },
 		Constant = { fg = p.fg_alt },
 		String = { fg = p.green },
@@ -115,7 +118,7 @@ function M.build(config, p)
 		DiffText = { fg = p.honey_light, bg = p.bg_highlight },
 
 		CurSearch = { link = "IncSearch" },
-		CursorIM = { link = "CursorLine" },
+		CursorIM = { link = "Cursor" },
 		DiagnosticFloatingError = { link = "DiagnosticError" },
 		DiagnosticFloatingWarn = { link = "DiagnosticWarn" },
 		DiagnosticFloatingInfo = { link = "DiagnosticInfo" },
