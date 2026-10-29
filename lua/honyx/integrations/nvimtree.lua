@@ -17,6 +17,9 @@ function M.get(p)
 		NvimTreeGitDirty = { fg = p.honey },
 		NvimTreeGitNew = { fg = p.green },
 		NvimTreeGitDeleted = { fg = p.red },
+		NvimTreeGitDirtyIcon = { fg = p.honey },
+		NvimTreeGitNewIcon = { fg = p.green },
+		NvimTreeGitDeletedIcon = { fg = p.red },
 	}
 end
 
