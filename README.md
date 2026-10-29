@@ -1,8 +1,8 @@
 # honyx.nvim
 
-A minimal Neovim colorscheme. Cool onyx darks, with warm honey-gold accents.
-For diagnostics and general UI, a simple selection of soft red, blue and green
-are used.
+A minimal dark-only Neovim colorscheme. Cool onyx darks, with warm honey-gold
+accents. For diagnostics and general UI, a simple selection of soft red, blue
+and green are used.
 
 ## Installation
 
@@ -23,20 +23,17 @@ Adapt to your package manager of choice.
 
 ```lua
 require("honyx").setup()
-vim.cmd.colorscheme("honyx")
 ```
 
-Or set the colorscheme directly after ensuring the plugin is loaded:
-
-```lua
-vim.cmd.colorscheme("honyx")
-```
+`setup(opts)` configures and applies the colorscheme. To reload it later, run
+`:colorscheme honyx`; this reapplies the stored options (or the defaults if
+`setup()` was never called).
 
 ## Options
 
 ```lua
 require("honyx").setup({
-  transparent = false, -- enable to remove all backgrounds
+  transparent = false, -- enable to remove the main window backgrounds
 
   styles = {
     comments = { italic = true },
@@ -53,7 +50,7 @@ require("honyx").setup({
 
 | Option        | Default                                              | Description                          |
 | ------------- | ---------------------------------------------------- | ------------------------------------ |
-| `transparent` | `false`                                              | Remove all background highlights     |
+| `transparent` | `false`                                              | Remove the main window backgrounds   |
 | `styles`      | comment and keywords italics on; function styles off | Apply shared text styles by role     |
 | `overrides`   | `{}`                                                 | Override individual highlight groups |
 
@@ -77,7 +74,7 @@ require("honyx").setup({
 | Honey dark  | `#d4aa6e` ![#d4aa6e](https://placehold.co/30x15/d4aa6e/d4aa6e.png) |
 | Green       | `#78dbb8` ![#78dbb8](https://placehold.co/30x15/78dbb8/78dbb8.png) |
 | Blue        | `#9ab8d4` ![#9ab8d4](https://placehold.co/30x15/9ab8d4/9ab8d4.png) |
-| Red         | `#FF7070` ![#FF7070](https://placehold.co/30x15/FF7070/FF7070.png) |
+| Red         | `#D96868` ![#D96868](https://placehold.co/30x15/D96868/D96868.png) |
 | Foreground  | `#F5F5FF` ![#F5F5FF](https://placehold.co/30x15/F5F5FF/F5F5FF.png) |
 | Muted       | `#808590` ![#808590](https://placehold.co/30x15/808590/808590.png) |
 
