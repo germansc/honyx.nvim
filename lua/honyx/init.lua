@@ -21,12 +21,22 @@ local function apply(highlights)
 	end
 end
 
+local stored_config
+
+local function render(cfg)
+	local highlights = theme.build(cfg, palette.resolve(cfg))
+	apply(highlights)
+end
+
 --- Configure and apply the Honyx colorscheme.
 --- @param opts? { transparent?: boolean, styles?: table, overrides?: table }
 function M.setup(opts)
-	local cfg = config.build(opts)
-	local highlights = theme.build(cfg, palette.resolve(cfg))
-	apply(highlights)
+	stored_config = config.build(opts)
+	render(stored_config)
+end
+
+function M.load()
+	render(stored_config or config.build())
 end
 
 return M
