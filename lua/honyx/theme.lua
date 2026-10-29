@@ -31,7 +31,7 @@ function M.build(config, p)
 		CursorColumn = { bg = p.bg_alt },
 		CursorLineNr = { fg = p.fg, bg = p.bg_alt },
 		Directory = { fg = p.blue },
-		EndOfBuffer = { fg = p.onyx },
+		EndOfBuffer = { fg = config.transparent and p.border or p.onyx },
 		ErrorMsg = { fg = p.red },
 		WinSeparator = { fg = p.border },
 		Folded = { fg = p.muted, bg = p.bg_alt },
@@ -60,6 +60,10 @@ function M.build(config, p)
 		WarningMsg = { fg = p.honey },
 		Whitespace = { fg = p.border },
 		WildMenu = { fg = p.onyx, bg = p.honey_dark },
+		WinBar = { fg = p.fg_alt, bg = p.bg_alt, bold = true },
+		WinBarNC = { fg = p.muted, bg = p.bg_alt },
+		QuickFixLine = { bg = p.bg_highlight },
+		OkMsg = { fg = p.green },
 		Delimiter = { fg = p.muted },
 
 		SpellBad = { undercurl = true, sp = p.red },
@@ -108,6 +112,8 @@ function M.build(config, p)
 		DiagnosticUnderlineWarn = { sp = p.honey, undercurl = true },
 		DiagnosticUnderlineInfo = { sp = p.blue, undercurl = true },
 		DiagnosticUnderlineHint = { sp = p.blue, undercurl = true },
+		DiagnosticUnderlineOk = { sp = p.green, undercurl = true },
+		DiagnosticDeprecated = { fg = p.red, strikethrough = true },
 
 		Added = { fg = p.blue },
 		Changed = { fg = p.honey },
