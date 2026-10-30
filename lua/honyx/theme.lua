@@ -119,9 +119,9 @@ function M.build(config, p)
 		Changed = { fg = p.honey },
 		Removed = { fg = p.red },
 		DiffAdd = { fg = p.blue, bg = p.onyx_alt },
-		DiffChange = { fg = p.honey, bg = p.onyx_alt },
+		DiffChange = { bg = p.onyx_alt },
 		DiffDelete = { fg = p.red, bg = p.onyx_alt },
-		DiffText = { fg = p.honey_light, bg = p.bg_highlight },
+		DiffText = { fg = p.onyx_alt, bg = p.fg_alt },
 
 		CurSearch = { link = "IncSearch" },
 		CursorIM = { link = "Cursor" },
